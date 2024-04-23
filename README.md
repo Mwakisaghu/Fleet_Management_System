@@ -21,6 +21,7 @@ This Fleet Management System is designed to manage a comprehensive set of featur
 - **Git**: Version control system. [Install Git](https://git-scm.com/downloads)
   
 ## **Getting Started**
+---
 #### **Prerequisites**
 Ensure you have the following installed:
 - Java Development Kit (JDK) 11 or later
@@ -30,6 +31,7 @@ Ensure you have the following installed:
 - Git
   
 #### **Setup Instructions**
+---
 1. **Clone the repository**
    ```sh
    git clone https://github.com/yourusername/fleet-management-system.git
@@ -57,6 +59,7 @@ Ensure you have the following installed:
     mvn exec:java -Dexec.mainClass="com.yourcompany.MainClass"
 
 ## Contribution Guidelines
+---
 ### Reporting Issues
 - Issues can be reported via the GitHub issue tracker. Please provide a detailed description, expected outcomes, actual outcomes, steps to reproduce, and screenshots if possible.
 
@@ -64,9 +67,11 @@ Ensure you have the following installed:
 - Detailed steps are provided in the repository for creating branches, making changes, testing, and submitting patches through pull requests.
 
 ## Acknowledgments
+---
 - Special thanks to all the contributors, mentors, and organizations who have supported this project. Your contributions are highly appreciated!
 
 ## License
+---
 - This project is licensed under the MIT License - see the LICENSE file for details.
 
 
