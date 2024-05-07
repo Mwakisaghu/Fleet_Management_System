@@ -2,6 +2,7 @@ package unit.tests;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import workflow.VehicleRegistrationActivitiesImpl;
 
 import static org.mockito.Mockito.*;
@@ -22,5 +23,14 @@ public class VehicleRegistrationActivitiesTest {
     @After
     public void tearDown() throws SQLException {
         mockConnection.close();
+    }
+
+    @Test
+    public  void testInputVehicleDetails() throws SQLException {
+        // Executing the mtd being tested
+        activities.inputVehicleDetails();
+
+        // verifying that the expected SQL statement is executed
+        verify(mockConnection).prepareStatement("INSERT INTO vehicles(make, model, year) VALUES(?, ?, ?)");
     }
 }
