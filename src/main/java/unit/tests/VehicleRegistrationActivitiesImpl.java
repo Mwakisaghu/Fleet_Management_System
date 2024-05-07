@@ -53,4 +53,18 @@ public class VehicleRegistrationActivitiesImpl implements VehicleRegistrationAct
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void saveToDb() throws SQLException {
+        // Implementing save to database
+        try {
+            String sql = "UPDATE vehicles SET model = ? WHERE make = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, "Corolla");
+            statement.setString(2, "Toyota");
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
