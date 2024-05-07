@@ -1,4 +1,4 @@
-package unit.tests;
+package workflow;
 
 import java.sql.*;
 
@@ -6,7 +6,7 @@ public class VehicleRegistrationActivitiesImpl implements VehicleRegistrationAct
 
     private final Connection connection;
 
-    public VehicleRegistrationActivitiesImpl() throws SQLException {
+    public VehicleRegistrationActivitiesImpl(Connection mockConnection) throws SQLException {
         // Establishing a database connection
         this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "username", "password");
     }
@@ -56,7 +56,7 @@ public class VehicleRegistrationActivitiesImpl implements VehicleRegistrationAct
 
     @Override
     public void saveToDb() throws SQLException {
-        // Implementing save to database
+        // Implementing save to database activity
         try {
             String sql = "UPDATE vehicles SET model = ? WHERE make = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
