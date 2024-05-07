@@ -8,6 +8,8 @@ import workflow.VehicleRegistrationActivitiesImpl;
 import static org.mockito.Mockito.*;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class VehicleRegistrationActivitiesTest {
@@ -32,5 +34,21 @@ public class VehicleRegistrationActivitiesTest {
 
         // verifying that the expected SQL statement is executed
         verify(mockConnection).prepareStatement("INSERT INTO vehicles(make, model, year) VALUES(?, ?, ?)");
+    }
+
+    @Test
+    public void testVerifyInformation() throws SQLException {
+        // Mock ResultSet and PreparedStatement
+        PreparedStatement mockStatement = mock(PreparedStatement.class);
+        ResultSet resultSet = mock(ResultSet.class);
+
+        // Mock behaviour when the query is being executed
+        when(mockStatement.executeQuery()).thenReturn((ResultSet) mockStatement);
+
+        // Executing the method under test
+        activities.verifyInformation();
+
+        // Verifying that the expected SQL statement was executed
+        verify(mockConnection).prepareStatement("SELECT * FROM vehicles WHERE MAKE = ? AND model = ? AND year = ?");
     }
 }
