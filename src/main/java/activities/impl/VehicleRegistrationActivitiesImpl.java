@@ -55,7 +55,7 @@ public class VehicleRegistrationActivitiesImpl implements VehicleRegistrationAct
     }
 
     @Override
-    public void saveToDb() throws SQLException {
+    public void saveToDb() {
         // Implementing save to database activity
         try {
             String sql = "UPDATE vehicles SET model = ? WHERE make = ?";
