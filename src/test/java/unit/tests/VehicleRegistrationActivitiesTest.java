@@ -3,7 +3,7 @@ package unit.tests;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import workflow.VehicleRegistrationActivitiesImpl;
+import activities.impl.VehicleRegistrationActivitiesImpl;
 
 import static org.mockito.Mockito.*;
 

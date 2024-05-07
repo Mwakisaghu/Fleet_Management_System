@@ -1,4 +1,4 @@
-package workflow;
+package activities.impl;
 
 import java.sql.*;
 
