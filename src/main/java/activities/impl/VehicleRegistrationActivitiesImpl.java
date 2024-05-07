@@ -35,7 +35,7 @@ public class VehicleRegistrationActivitiesImpl implements VehicleRegistrationAct
             String sql = "SELECT * FROM vehicles WHERE make = ? AND model = ? AND year = ? ";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, "Toyota");
-            statement.setString(2, Camry);
+            statement.setString(2, "Camry");
             statement.setInt(3, 1990);
 
             // Execute the query
