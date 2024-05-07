@@ -51,4 +51,13 @@ public class VehicleRegistrationActivitiesTest {
         // Verifying that the expected SQL statement was executed
         verify(mockConnection).prepareStatement("SELECT * FROM vehicles WHERE MAKE = ? AND model = ? AND year = ?");
     }
+
+    @Test
+    public void testSaveToDb() throws SQLException {
+        // Executing the method under test
+        activities.saveToDb();
+
+        // Verifying that the mtd was executed
+        verify(mockConnection).prepareStatement("UPDATE vehicles SET model = ? WHERE make = ?");
+    }
 }
