@@ -1,9 +1,6 @@
 package unit.tests;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class VehicleRegistrationActivitiesImpl implements VehicleRegistrationActivities {
 
@@ -27,6 +24,33 @@ public class VehicleRegistrationActivitiesImpl implements VehicleRegistrationAct
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle or rethrow the exception as needed
+        }
+    }
+
+    @Override
+    public void verifyInformation() {
+        // Implementation of verifying inputted vehicles information
+        try {
+            // Checks if vehicle info exists in the database
+            String sql = "SELECT * FROM vehicles WHERE make = ? AND model = ? AND year = ? ";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, "Toyota");
+            statement.setString(2, Camry);
+            statement.setInt(3, 1990);
+
+            // Execute the query
+            ResultSet resultSet = statement.executeQuery();
+
+            // Process the results
+            if (resultSet.next()) {
+                // Vehicle information exists in the database
+                System.out.println("Vehicle information exists.");
+            } else {
+                // Vehicle information does not exist in the database
+                System.out.println("Vehicle information does not exist.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
