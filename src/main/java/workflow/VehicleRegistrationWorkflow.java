@@ -6,5 +6,5 @@ import io.temporal.workflow.WorkflowMethod;
 @WorkflowInterface
 public interface VehicleRegistrationWorkflow {
     @WorkflowMethod
-    void registerVehicle();
+    void registerVehicle(String make, String model, int year, String updatedModel);
 }

@@ -24,40 +24,40 @@ public class VehicleRegistrationActivitiesTest {
 
     @After
     public void tearDown() throws SQLException {
-        mockConnection.close();
+        // No need to close the mock connection
     }
 
     @Test
-    public  void testInputVehicleDetails() throws SQLException {
-        // Executing the mtd being tested
-        activities.inputVehicleDetails();
+    public void testInputVehicleDetails() throws SQLException {
+        // Executing the method being tested
+        activities.inputVehicleDetails("Toyota", "Camry", 1990);
 
-        // verifying that the expected SQL statement is executed
+        // Verifying that the expected SQL statement is executed
         verify(mockConnection).prepareStatement("INSERT INTO vehicles(make, model, year) VALUES(?, ?, ?)");
     }
 
     @Test
     public void testVerifyInformation() throws SQLException {
-        // Mock ResultSet and PreparedStatement
+        // Mock PreparedStatement
         PreparedStatement mockStatement = mock(PreparedStatement.class);
-        ResultSet resultSet = mock(ResultSet.class);
 
-        // Mock behaviour when the query is being executed
-        when(mockStatement.executeQuery()).thenReturn((ResultSet) mockStatement);
+        // Mock behavior when the query is being executed
+        when(mockConnection.prepareStatement(anyString())).thenReturn(mockStatement);
+        when(mockStatement.executeQuery()).thenReturn(mock(ResultSet.class));
 
         // Executing the method under test
-        activities.verifyInformation();
+        activities.verifyInformation("Toyota", "Camry", 1990);
 
         // Verifying that the expected SQL statement was executed
-        verify(mockConnection).prepareStatement("SELECT * FROM vehicles WHERE MAKE = ? AND model = ? AND year = ?");
+        verify(mockConnection).prepareStatement("SELECT * FROM vehicles WHERE make = ? AND model = ? AND year = ?");
     }
 
     @Test
     public void testSaveToDb() throws SQLException {
         // Executing the method under test
-        activities.saveToDb();
+        activities.saveToDb("Toyota", "Corolla");
 
-        // Verifying that the mtd was executed
+        // Verifying that the method was executed
         verify(mockConnection).prepareStatement("UPDATE vehicles SET model = ? WHERE make = ?");
     }
 }
